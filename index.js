@@ -5,11 +5,17 @@ import OpenAI from "openai";
 
 const app = express();
 
-// cors 설정 : 도메인 허용 범위 설정
-app.use(cors());
-
 // env 설정
 dotenv.config();
+
+// CORS 설정
+const corsOption = {
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+};
+
+// cors 설정 : 도메인 허용 범위 설정
+app.use(cors(corsOption));
 
 const API_KEY = process.env.OPENAI_API_KEY;
 
